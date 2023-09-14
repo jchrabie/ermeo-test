@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  height: 48px;
+  max-width: 300px;
+  background-color: rgba($color: #fff, $alpha: 0.025);
+  border-radius: 0.5rem;
+  position: relative;
+
+  input[type='number'] {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-weight: bold;
+    padding: 0 1rem;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  ::ng-deep button {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+  }
+
+  &:hover ::ng-deep button {
+    opacity: 1;
+  }
+}
+
+:host-context(.success) {
+  background-color: #69cb47;
+}
+:host-context(.info) {
+  background-color: #0e22e7;
+}
+:host-context(.error) {
+  background-color: #a3241a;
+}
+:host-context(.warning) {
+  background-color: #d0cf4a;
+}

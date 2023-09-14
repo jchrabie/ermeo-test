@@ -1,0 +1,14 @@
+<input
+  matInput
+  type="number"
+  [ngModel]="value"
+  (click)="$any($event.target).select()"
+  (ngModelChange)="valueChange.emit($event)" />
+<button
+  aria-label="Delete"
+  mat-icon-button
+  matTooltip="Delete item"
+  (click)="delete.emit()">
+  <mat-icon>delete</mat-icon>
+</button>
+<ng-content></ng-content>

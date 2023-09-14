@@ -1,0 +1,16 @@
+<div class="container" cdkDropListGroup>
+  <app-column
+    *ngFor="let column of columns(); let index = index; trackBy: trackByFn"
+    [column]="column"
+    (titleChange)="update($event, index)"
+    (deleteColumn)="delete(index)" />
+</div>
+<button
+  mat-fab
+  matTooltip="Add new column"
+  [disabled]="columns().length === 9"
+  color="primary"
+  aria-label="add new column"
+  (click)="add()">
+  <mat-icon>add</mat-icon>
+</button>

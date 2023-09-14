@@ -1,0 +1,43 @@
+<div class="column-header">
+  <h2 class="column-header-title">
+    <input
+      matInput
+      [ngModel]="title()"
+      (click)="$any($event.target).select()"
+      (ngModelChange)="titleChange.emit($event)" />
+  </h2>
+  <p class="column-header-count">{{ count() }}</p>
+  <button
+    aria-label="Delete"
+    mat-icon-button
+    matTooltip="Delete column"
+    (click)="deleteColumn.emit()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div
+  cdkDropList
+  class="column-items"
+  [cdkDropListData]="list()"
+  (cdkDragDropped)="refresh()"
+  (cdkDropListDropped)="drop($event)">
+  <app-column-item
+    *ngFor="let columnItem of list(); let index = index; trackBy: trackByFn"
+    appColorItem
+    cdkDrag
+    [value]="columnItem"
+    (cdkDragDropped)="refresh()"
+    (delete)="delete(index)"
+    (valueChange)="update(index, $event)">
+    <button
+      aria-label="drag handle"
+      cdkDragHandle
+      mat-icon-button
+      matTooltip="Drag handle">
+      <mat-icon>drag_handle</mat-icon>
+    </button>
+  </app-column-item>
+</div>
+<button class="column-add" mat-button matTooltip="Add new item" (click)="add()">
+  <mat-icon>add</mat-icon> New
+</button>

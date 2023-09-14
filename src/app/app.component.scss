@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  gap: 2rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+
+  @media screen and (min-width: 675px) {
+    flex-direction: row;
+  }
+}
+
+button {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+}
